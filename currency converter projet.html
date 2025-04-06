@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      .container{
+        width: 80%;
+        margin: 40px auto;
+        background-color:#00539C;
+        padding: 20px;
+        border:none;
+        border-radius: 3px;
+
+      }
+      .upper{
+        text-align: center;
+        padding:20px;
+      }
+      label{
+        color:white;
+        font-weight: bold;
+        font-size: 20px;
+      }
+      input{
+        padding: 10px;
+      }
+     
+      .main{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .currencies1{
+        padding: 20px;
+      }
+      select{
+        padding:10px;
+      }
+      .icon{
+        border: 5px solid #FFD662;
+        border-radius: 50%;
+        padding: 10px;
+        color:#00539C;
+        background-color: white;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+      .rate{
+        text-align: center;
+        font-family:;
+      }
+      .btn{
+        text-align: center;
+        margin-top: 15px;
+      }
+      .btn button{
+        
+        border: none;
+        color: #00539C;
+        padding: 10px 20px;
+        font-weight: bold;
+        font-size: 20px;
+        transition: all 0.3s ease;
+}
+.btn button:active {
+    transform: scale(0.96);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+    </style>
+</head>
+<body>
+  <div class="container">
+  <div class="upper">
+    <label for="">Convert:</label>
+    <input type="number" id="convert" value="1">
+  </div>
+   <div class="main">
+    <div class="currencies1">
+        <select name="" id="from_currency">
+            <option value="USD">USD</option>
+            <option value="AFN">AFN</option>
+            <option value="EUR">EUR</option>
+            <option value="ALL">ALL</option>
+            <option value="DZD">DZD</option>
+            <option value="INR">INR</option>
+            <option value="BMD">BMD</option>
+            <option value="BTN">BTN</option>
+            <option value="DOB">BOB</option>
+            <option value="RUB">RUB</option>
+            <option value="HKD">HKD</option>
+        </select>
+       </div>
+       <div class="icon" onclick="swapcurrencies()">
+        <i class="fas fa-exchange-alt"></i> 
+       </div>
+       <div class="currencies2">
+        <select name="" id="to_currency">
+            <option value="INR">INR</option>
+            <option value="AFN">AFN</option>
+            <option value="EUR">EUR</option>
+            <option value="ALL">ALL</option>
+            <option value="DZD">DZD</option>
+            <option value="RUB">RUB</option>
+            <option value="BMD">BMD</option>
+            <option value="BTN">BTN</option>
+            <option value="BOB">BOB</option>
+            <option value="USD">USD</option>
+            <option value="HKD">HKD</option>
+        </select>
+       </div>
+   </div>
+   <div class="rate">
+    <label for="">Exchange Rate:</label>
+    <input type="text" id="exchangerate">
+   </div>
+   <div class="btn">
+    <button onclick="exchangemymoneynow()">Exchange my money now!</button>
+   </div>
+  </div>
+  <script>
+    const fromCurrency = document.getElementById('from_currency');
+    const toCurrency = document.getElementById('to_currency');
+    const convert = document.getElementById('convert');
+    const exchangeRateInput = document.getElementById('exchangerate');
+
+    function exchangemymoneynow() {
+      const from = fromCurrency.value;
+      const to = toCurrency.value;
+      const amount = convert.value;
+
+      const url = `https://v6.exchangerate-api.com/v6/b9ad684e21c31df85c230cc8/latest/${from}`;
+
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          const rate = data.conversion_rates[to];
+          const result = (amount * rate).toFixed(2);
+          exchangeRateInput.value = ` ${result}`;
+        })
+        .catch(error => console.error('Error:', error));
+    }
+    function swapcurrencies() {
+        // Swap values
+        const temp = fromCurrency.value;
+        fromCurrency.value = toCurrency.value;
+        toCurrency.value = temp;
+    
+        // Immediately recalculate
+        exchangemymoneynow();
+      }
+  </script>
+    
+</body>
+</html>

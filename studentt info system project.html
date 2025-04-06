@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DQvkBjpPgn7RC31MCQoOeC9TI2kdqa4+BSgNMNj8v77fdC77Kj5zpWFTJaaAoMbC" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-4 border border-5 rounded border-danger p-4 shadow">
+      
+        <form>
+            <div class="mb-3">
+              <label for="" class="form-label text-success fw-bold">First Name</label>
+              <input type="text" class="form-control border border-dark " id="firstname" style="width:100%;" >
+              
+            </div>
+            <div class="mb-3">
+                <label for="" class="form-label text-success fw-bold">Last Name</label>
+                <input type="text" class="form-control border border-dark" id="lastname"style="width:100%;" >
+                
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label text-success fw-bold">Age</label>
+                <input type="text" class="form-control border border-dark " id="age" style="width:100%;" >
+                
+              </div>
+              <div class="mb-3">
+                <label for="" class="form-label text-success fw-bold">class</label>
+                <input type="text" class="form-control border border-dark" id="klas" style="width:100%;" >
+                
+              </div>
+            <button type="submit" onclick="displaydetails(event)"class="btn btn-warning mt-3 mb-4 w-100 rounded fw-bold">Submit</button>
+          </form>
+        
+    </div>
+
+
+    <div class="container mt-4">
+        <h4>📋 Student JSON Output:</h4>
+        <pre id="output" class="border p-3 bg-light"></pre>
+    </div>
+
+
+    <script>
+        function displaydetails(event) {
+          event.preventDefault(); // stop form from reloading the page
+      
+          let fname = document.getElementById("firstname").value;
+          let lastname = document.getElementById("lastname").value;
+          let age = document.getElementById("age").value;
+          let klas = document.getElementById("klas").value;
+      
+          let student_description = {
+            firstname: fname,
+            lastname: lastname,
+            age: age,
+            studentClass: klas
+          };
+      
+          document.getElementById("output").innerText = JSON.stringify(student_description, null, 4);
+        }
+      </script>
+      
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-YUe2LzesAfftltw+PEaao2tjU/QATaW/rOitAq67e0CT0Zi2VVRL0oC4+gAaeBKu" crossorigin="anonymous"></script>
+  </body>
+</html>

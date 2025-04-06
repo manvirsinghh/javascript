@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Letter Hover Effect</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background: #0f0f0f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1 {
+      font-size: 3rem;
+      color: #fff;
+      display: flex;
+      gap: 5px;
+    }
+
+    h1 span {
+      display: inline-block;
+      transition: transform 0.3s ease, color 0.3s;
+      cursor: pointer;
+    }
+
+    h1 span:hover {
+      transform: translateY(-10px) scale(1.2) rotate(5deg);
+      color: #ffd700;
+    }
+  </style>
+</head>
+<body>
+
+  <h1 id="hover-text">Hello Manvir</h1>
+
+  <script>
+    const text = document.getElementById("hover-text");
+    const letters = text.textContent.split("");
+
+    text.textContent = "";
+
+    letters.forEach(letter => {
+      const span = document.createElement("span");
+      span.textContent = letter;
+      text.appendChild(span);
+    });
+  </script>
+
+</body>
+</html>

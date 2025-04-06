@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Building a Decimal to Binary Converter</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+        .container{
+            border:none;
+            border-radius: 3px;
+            padding: 10px;
+            background-color: #0A0A23;
+            color: #fff;
+            font-size: 18px;
+            font-family: Arial, sans-serif;
+            width: 700px;
+            height: 400px;
+            margin:40px auto;
+            }
+            h1{
+                text-align: center;
+                margin-top: 10px;
+                font-weight: bold;
+                font-size: 40px;
+            }
+            .main{
+                
+                
+                padding-top: 30px;
+                margin: auto;
+                width:75%;
+              
+               
+            }
+            input{
+                padding:5px;
+            }
+            button{
+                padding:2px;
+                background-color: #F1BE33;
+                border:4px solid #528DDB;
+                border-radius: 3px;
+            }
+            
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Decimal to Binary Converter</h1>
+       <div class="main">
+        <label for="">Enter a decimal number:</label>
+        <input type="text" id="number">
+         <button onclick="convert()">Convert</button>
+        <p id="result"></p>
+       </div>
+    
+    </div>
+   <script>
+    function convert() {
+        var decimal = document.getElementById("number").value;
+    
+        if (isNaN(decimal)) {
+            document.getElementById("result").textContent = "❌ Please enter a valid number.";
+            return;
+        }
+    
+        let binary = parseInt(decimal).toString(2);
+        document.getElementById("result").textContent = `Binary: ${binary}`;
+    }
+    
+   </script>
+</body>
+</html>

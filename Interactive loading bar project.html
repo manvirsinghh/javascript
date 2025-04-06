@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Interactive Loading Bar</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 50px;
+      background: #f1f1f1;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+    }
+
+    .bar-container {
+      width: 80%;
+      max-width: 500px;
+      height: 30px;
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px auto;
+    }
+
+    .bar-fill {
+      height: 100%;
+      width: 0%;
+      background-color: #28a745;
+      transition: width 0.3s ease;
+      color: white;
+      text-align: center;
+      line-height: 30px;
+      font-weight: bold;
+    }
+
+    .range-slider {
+      width: 80%;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔧 Interactive Loading Bar</h1>
+  <div class="bar-container">
+    <div class="bar-fill" id="fillBar">0%</div>
+  </div>
+
+  <input type="range" min="0" max="100" value="0" id="rangeSlider" class="range-slider">
+
+  <script>
+    const slider = document.getElementById("rangeSlider");
+    const bar = document.getElementById("fillBar");
+
+    slider.addEventListener("input", () => {
+      const value = slider.value;
+      bar.style.width = value + "%";
+      bar.innerText = value + "%";
+
+      // Optional: Change color based on progress
+      if (value < 50) {
+        bar.style.backgroundColor = "#ffc107"; // yellow
+      } else if (value < 80) {
+        bar.style.backgroundColor = "#17a2b8"; // blue
+      } else {
+        bar.style.backgroundColor = "#28a745"; // green
+      }
+    });
+  </script>
+</body>
+</html>

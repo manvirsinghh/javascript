@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prime number finder project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 30%;
+            margin: 40px auto;
+            padding-top: 20px;
+            background-color: #CFE09F;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            height: 450px;
+            text-align: center;
+
+        }
+
+        h2 {
+            color: #649159;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        input {
+            margin-top: 30px;
+            font-size: 15px;
+            border: 2px solid #0E700E;
+            border-radius: 5px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .btn button {
+            margin-top: 30px;
+            font-size: 15px;
+            border: 2px solid #0E700E;
+            color: white;
+            background-color: #008000;
+            padding: 10px;
+            border-radius: 20px;
+            cursor: pointer;
+            width: 20%;
+
+        }
+
+        #result {
+            margin: 30px auto;
+            font-size: 15px;
+            color: white;
+            background-color: #2F470B;
+            padding: 10px;
+            height: 100px;
+            width: 400px;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 3px;
+            font-size: 20px;
+
+
+        }
+
+        @media (max-width:1024px) {
+            .container {
+                width: 100%;
+                padding: 0;
+            }
+
+            .btn button {
+                width: 50%;
+            }
+
+            #result {
+                width: 80%;
+            }
+
+            input {
+                width: 80%;
+            }
+
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2>Prime Number Finder</h2>
+        <input type="number" id="no" placeholder="Enter the number you want to check ">
+        <div class="btn">
+            <button onclick="clearInput()">Clear</button>
+            <button onclick="submit()">Submit</button>
+        </div>
+        <div id="result">Result:</div>
+
+    </div>
+    <script>
+        function submit() {
+            var num = document.getElementById("no").value;
+            var result = "";
+            if (num > 1) {
+                for (var i = 2; i < num; i++) {
+                    if (num % i == 0) {
+                        result = "The number is not a prime number";
+                        break;
+                    }
+                }
+                if (result == "") {
+                    result = "The number is a prime number";
+                }
+            }
+            else {
+                result = "The number is not a prime number";
+            }
+            document.getElementById("result").innerHTML = "Result:" + result;
+        }
+        function clearInput() {
+            document.getElementById("no").value = "";
+            document.getElementById("result").innerHTML = "";
+        }
+    </script>
+
+</body>
+
+</html>

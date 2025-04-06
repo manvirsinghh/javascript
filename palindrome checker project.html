@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome Checker project</title>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+    }
+    
+    .container{
+        border:none;
+        border-radius: 3px;
+        padding: 10px;
+        background-color: #0A0A23;
+        color: #fff;
+        font-size: 18px;
+        font-family: Arial, sans-serif;
+        width: 700px;
+        height: 400px;
+        margin:40px auto;
+        }
+        h1{
+            text-align: center;
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 60px;
+        }
+        .main{
+            border:none;
+            border-radius: 10px;
+            background-color: white;
+            padding:50px;
+            margin: 20px auto;
+            width:75%;
+            box-shadow: 0 0 10px #025adf;
+           
+        }
+        button{
+            color: white;
+            font-weight: bold;
+            border:3px solid #0A55C8;
+            border-radius: 10px;
+            background-color: #5A01A7;
+            padding: 10px 20px;
+        }
+        input{
+            border-bottom:3px solid #5A01A7;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            text-align: center;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        p{
+            color:black;
+            font-weight: bold;
+        }
+        @media (max-width:768px){
+            .container{
+                width:500px;
+            }
+            h1{
+                font-size: 50px;
+            }
+            .main{
+                width:90%;
+            }
+            .main input{
+                width: 100%;
+                font-size: 15px;
+                margin-bottom: 20px;
+            }
+           
+        }
+</style>
+</head>
+<body>
+   
+    <div class="container">
+        <h1>Is it a Palindrome?</h1>
+       <div class="main">
+        <input type="text" id="word" placeholder="Type in a word">
+         <button onclick="check()">Check</button>
+         <p id="result"></p>
+       </div>
+    
+    </div>
+    <script>
+        function check() {
+
+  const text=document.getElementById("word").value;
+  var reversed="";
+
+   for (let i=text.length-1;i>=0;i--) {
+    reversed+=text[i];
+}
+const resultElement = document.getElementById("result");
+if (text.toLowerCase()===reversed.toLowerCase()) {
+    resultElement.textContent = "✅ The word is a palindrome";
+}
+else{
+    resultElement.textContent = "❌ The word is not a palindrome";
+}
+
+        }
+
+        
+
+
+    </script>
+</body>
+</html>
