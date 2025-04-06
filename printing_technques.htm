@@ -1,0 +1,25 @@
+< !DOCTYPE html >
+
+    <body>
+        <h2>Print with innerHTML, document.write,console.log,window.alert</h2>
+        <p>My first paragraph</p>
+        <p id="demo"></p>
+        <button type="button" onclick="document.write(5+6)">Try it</button>
+        <button onclick="window.print()">Print this page</button>
+        <script>
+            document.getElementById("demo").innerHTML=5+6;
+           
+
+            {/* using document.write() after an HTML document is loaded ,will delete all existing HTML  */}
+            window.alert(5+6);
+            // In Javascript ,the window object is the global scope object .This means that variables ,properties and methods by default belong to the window object 
+            alert(5+6);
+        // window keyword is optional:
+            console.log(5+6);
+        //to print a page 
+
+
+
+        </script>
+    </body>
+</html>

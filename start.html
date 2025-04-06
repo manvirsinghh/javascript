@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript</title>
+</head>
+<body>
+    <h2>What can javascript Do?</h2>
+    <p id="demo">Javascript can change the style of an html element.</p>
+    <h1 id="mydemo">This is heading</h1>
+    <button type="button" onclick="changeStyle()" Click me></button>
+    <!-- <button type="button" onclick="document.getElementById('mydemo').innerHTML='<h5>hlo</h5>'">Change color</button> -->
+    <button type="button" onclick="document.getElementById('mydemo').style.color='red'">Change color</button>
+    <script>
+        function changeStyle(){
+            var element=document.getElementById('demo');
+            element.style.fontSize='35px';
+            element.style.color='blue';  //change color to blue
+        }  </script>
+
+<br>
+<img id="myImage" src="pic_bulboff.gif" alt="">
+
+<button onclick="document.getElementById('myImage').src='pic_bulbon.gif'">Turn on the light</button>
+
+<button onclick="document.getElementById('myImage').src='pic_bulboff.gif'">Turn off the light</button>
+
+
+<h2>What can javascript Do?</h2>
+<p id="demo">Javascript can change the style of an html element</p>
+
+<button type="button" onclick="document.getElementById('demo').style.display='none'">Click Me!</button>
+
+  
+</body>
+</html>
+
+<!-- ///////////////////////////////////////////////////////////////////// -->
+<!-- Javascript HTML methods is getElementById( changes the element content(innerHTML) -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+</head>
+<body>
+  <h2 id="inner">What can javascript Do?</h2>  
+  <button type="button" onclick='document.getElementById("inner").innerHTML= "Hello javascript!"'>Click me!</button>
+</body>
+</html>
+
+
+
+<!-- /////////////////////////////////////////////////////////////////////////// -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+</head>
+<body>
+    <h2 id="date">My first javascript</h2>
+    <button type="button" onclick="document.getElementById('date').innerHTML=Date()">Click me to display Date and Time</button>
+ <p id="demo"></p>
+ <h2>what can javascript Do?</h2>
+ <p>Javascript can change html attribute values.</p>
+ <p>In this case javascript changes the value of the src(source) attribute of an image.</p>
+
+sdf
+ 
+<!-- show content -->
+ <p id="demo" style="display:none">Hello Javascript!</p>
+
+ <button type="button" onclick="document.getElementById('demo').style.display='block'">Click me!</button>
+
+</body>
+</html>

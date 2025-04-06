@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 50%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid orange;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        #randomText {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+        <p>Type the given text below as fast as you can.</p>
+
+        <p id="randomText"></p> <!-- Displayed text to type -->
+        
+        <input type="text" id="userInput" placeholder="Start typing here..." oninput="startTyping()">
+
+        <p id="timer">Time Left: 60s</p>
+        <p id="typedWords"><strong>Total Typed Words:</strong> 0</p>
+        <p id="accuracyPercentage"><strong>Accuracy:</strong> 0%</p>
+
+        <button onclick="restartTest()">Restart</button>
+    </div>
+
+    <script>
+        let texts = [
+            "The quick brown fox jumps over the lazy dog.",
+            "JavaScript helps in creating dynamic web applications.",
+            "Practice makes a person perfect.",
+            "The cake is a lie! 🎂",
+            "Typing speed test is fun and challenging."
+        ];
+
+        let randomText = "";
+        let timer = 60;
+        let interval;
+        let testStarted = false;
+
+        function setRandomText() {
+            randomText = texts[Math.floor(Math.random() * texts.length)];
+            document.getElementById("randomText").innerText = randomText;
+        }
+
+        function startTyping() {
+            if (!testStarted) {
+                testStarted = true;
+                interval = setInterval(updateTimer, 1000);
+            }
+        }
+
+        function updateTimer() {
+            if (timer > 0) {
+                timer--;
+                document.getElementById("timer").textContent = `Time Left: ${timer}s`;
+            } else {
+                clearInterval(interval);
+                calculateResults();
+            }
+        }
+
+        function calculateResults() {
+            let typedText = document.getElementById("userInput").value.trim();
+            let totalWords = randomText.split(" ").length;
+            let typedWords = typedText.split(" ").length;
+            let accuracy = (typedWords / totalWords) * 100;
+
+            document.getElementById("typedWords").innerHTML = `<strong>Total Typed Words:</strong> ${typedWords}`;
+            document.getElementById("accuracyPercentage").innerHTML = `<strong>Accuracy:</strong> ${accuracy.toFixed(2)}%`;
+        }
+
+        function restartTest() {
+            clearInterval(interval);
+            timer = 60;
+            testStarted = false;
+            document.getElementById("userInput").value = "";
+            document.getElementById("timer").textContent = "Time Left: 60s";
+            document.getElementById("typedWords").innerHTML = `<strong>Total Typed Words:</strong> 0`;
+            document.getElementById("accuracyPercentage").innerHTML = `<strong>Accuracy:</strong> 0%`;
+            setRandomText();
+        }
+
+        setRandomText(); // Load a random text when the page loads
+    </script>
+
+</body>
+
+</html>

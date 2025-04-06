@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather app</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 40px auto;
+            height: 50vh;
+
+        }
+ .container{
+    border:0;
+    padding: 20px;
+    border-radius: 10px;
+    height:400px;
+    margin-top: 100px;
+    background: linear-gradient(135deg,#00feba,#5b548a);
+ }
+        .content {
+            display: flex;
+        }
+
+        .search input {
+
+            margin-right: 15px;
+            padding: 15px 50px;
+            text-align: left;
+            border-radius: 20px;
+            border:none;
+
+
+        }
+
+        .btn button {
+            border: none;
+            border-radius: 50%;
+            cursor:pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+
+
+        }
+        .btn button:hover {
+            background-color: #ddd;
+            transform: scale(1.1);
+        }
+
+        .btn img {
+            width: 25px;
+            height: 40px;
+            padding: 0px 10px;
+
+
+        }
+        .img{
+            margin-top: 20px;
+            height:20px;
+            width:50px;
+            
+        }
+       
+        .image img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10px auto;
+
+        }
+        .temperature,.city{
+            color:white;
+            font-size: 60px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .footer{
+            margin-top: 40px;
+            display: flex;
+            justify-content: space-between;
+            color:white;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+    </style>
+</head>
+
+<body>
+   
+    <div class="container">
+        <div class="content">
+            <div class="search">
+                <input type="text" id="search"placeholder="Search">
+            </div>
+            <div class="btn" >
+                <button id="searchh" onclick="details()"><img src="search (1).png" alt=""></button>
+            </div>
+        </div>
+        <div class="image">
+            <img src="sun.png" alt="">
+                
+        </div>
+        <div class="temperature">
+            22°C
+        </div>
+        <div class="city">
+            New York
+        </div>
+        <div class="footer">
+            <div class="humidity">
+                     <p>Humidity: 60%</p>
+            </div>
+            <div class="windspeed">
+                  <p>Wind Speed: 10 km/h</p>
+            </div>
+        </div>
+    </div>
+<script>
+    function details() {
+        const city = document.getElementById("search").value || "New York";
+        const apiKey = "0ab1049075a378d2ba065c5b7a960fcd";
+        const url = `http://api.weatherstack.com/current?access_key=${apiKey}&query=${city}`;
+    
+        fetch(url)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.current || data.success === false) {
+                    alert("City not found or API error");
+                    return;
+                }
+    
+                document.querySelector(".temperature").innerText = `${data.current.temperature}°C`;
+                document.querySelector(".city").innerText = data.location.name;
+                document.querySelector(".humidity").innerText = `Humidity: ${data.current.humidity}%`;
+                document.querySelector(".windspeed").innerText = `Wind Speed: ${data.current.wind_speed} km/h`;
+                document.querySelector(".image img").src = data.current.weather_icons[0];
+            })
+            .catch(error => {
+                alert("Something went wrong.");
+                console.error(error);
+            });
+    }
+    
+</script>
+</body>
+
+</html>

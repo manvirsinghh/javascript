@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 class="heading">THis is heading 1</h1>
+    <h1 class="heading">This is heading 2</h1>
+    <p id="para">This is a paragraph</p>
+
+    <script>
+        var h1=document.getElementsByTagName("h1");
+        console.log(h1);
+        console.log(h1.length);
+        console.log(h1[0]);
+
+        //changing the content by class name
+        var h1=document.getElementsByClassName("heading");
+        for(var i=0;i<h1.length;i++){
+            h1[i].innerHTML="This is heading 3";
+        }
+
+        //chnage the content by id
+        var para=document.getElementById("para");
+        para.innerText="changed by ID";
+
+        //changing content using tag  name
+        var p=document.getElementsByTagName("p");
+        for(var i=0;i<p.length;i++){
+            p[i].innerHTML="changed by tag name";
+        }
+
+        //changing content using querySelector
+
+        var h1=document.querySelector(".heading");
+        h1.innerHTML="changed by query selector";
+
+        //changing content using querySelectorAll
+        var h1=document.querySelectorAll(".heading");
+        for(var i=0;i<h1.length;i++){
+            h1[i].innerHTML="changed by query selector all";
+        }
+    </script>
+
+    <h2 id="change">Changing the content using javascript</h2>
+  <button id="changeh2">Click me</button>
+  <script>
+    document.getElementById("changeh2").addEventListener("click",function(){
+        document.getElementById("change").innerHTML="Changed by button click";
+    })
+  </script>
+</body>
+</html>

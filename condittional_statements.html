@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+    <h2>Javascript if else/for/foreach</h2>
+    <p id="demo"></p>
+    <p id="demo1"></p>
+    <p id="demo2"></p>
+    <p id="demo"></p>
+    <p id="demo4"></p>
+    <p id="demo5"></p>
+    <p id="demo6"></p>
+    <p id="demo7"></p>
+    <p id="demo8"></p>
+    <p id="demo9"></p>
+    <p id="demo10"></p>
+    <p id="demo11"></p>
+    <p id="demo12"></p>
+    <p id="demo13"></p>
+    <script>
+        //const time=new Date().getHours();
+        const time=20;
+        let greeting;
+        if(time<12){
+            greeting="good mrng";
+        }
+        else if(time<18){
+            greeting="good day";
+        }
+        else{
+            greeting="good evening";
+        }
+        document.getElementById("demo").innerHTML=greeting;
+
+
+        //switch statements
+
+        let text;
+        switch(new Date().getDay()){
+            case 6:
+            text="today is saturday";
+            break;
+            case 0:text="today is sunday";
+            break;
+            default:
+            text="looking forward to the weekend";
+        }
+        document.getElementById("demo1").innerHTML=text;
+
+        //switch  cases use strict comparsion(===).
+        let x="0";
+        //let x=0;
+        switch(x){
+            case 0:
+            text="Off";
+            break;
+            case 1:
+            text="On";
+            break;
+            default:
+            text="no value found";
+        }
+        document.getElementById("demo2").innerHTML=text;
+
+
+        //omitting first expression
+
+        const cars=["BMW","Volvo","Saab","Ford"];
+        let i=2;
+        let len=cars.length;
+        let text3="";
+
+        for(;i<len;i++){
+            text3+=cars[i]+"<br>";
+        }
+        document.getElementById("demo4").innerHTML=text3;
+
+        //omitting last expression
+
+        //const cars=["BMW","Volvo","Saab","Ford"];
+        //let i=0;
+        // let len=cars.length;
+        // let text3="";
+        //for(;i<len;){
+        //text3+=cars[i]+"<br>";
+        //i++;
+        //}
+        // document.getElementById("demo4").innerHTML=text3;
+        //
+        
+        
+
+        // for in statement loops through the properties of an object
+        //for in loop iterates over a person object
+        //each iteration returns a key in (x)
+        //the key is used to access the value of the key
+        //the vaue of the key is person[x]
+        const person={ fname:"john",lname:"doe", age:25};
+        let txt="";
+        for(let x in person){
+            txt+=person[x]+"";
+        }
+        //with an array
+        const numbers=[45,4,9,16,25];
+        let txt1="";
+        for(let x in numbers){
+            txt1+=numbers[x]+"<br>";
+        }
+        document.getElementById("demo6").innerHTML=txt1;
+
+        // using foreach 
+
+        const num=[45,4,9,16,25];
+        let txt2="";
+        num.forEach(myFunction);
+        document.getElementById("demo7").innerHTML=txt2;
+
+        function myFunction(value){
+            txt2+=value+"<br>";
+        }
+        //while
+
+        let text4="";
+        let k=0;
+        while(k<10){
+            text4+="<br> The number is "+k;
+            k++;
+        }
+        document.getElementById("demo8").innerHTML=text4;
+
+
+        //do while
+
+        let text5="";
+        let j=0;
+
+        do{
+            text5+="<br> The number is "+j;
+            j++;
+
+        }
+        while(j<10);
+        document.getElementById("demo9").innerHTML=text5;
+
+        //break statement
+
+        let text6="";
+        for(let i=0;i<10;i++){
+            if(i==3){
+                break;
+
+            }
+            text6+="The number is"+i+"<br>";
+        }
+        document.getElementById("demo10").innerHTML=text6;
+
+        //continue statement
+
+
+        let text7="";
+        for(let i=0;i<10;i++){
+            if(i==3){
+                continue;
+
+            }
+            text7+="The number is"+i+"<br>";
+        }
+        document.getElementById("demo11").innerHTML=text7;
+
+    </script>
+</body>
+
+</html>

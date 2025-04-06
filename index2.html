@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Javascript events</title>
+    <style>
+        .hovered {
+            background-color: rgb(185, 185, 99);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 id="title">Javascript events example</h1>
+    <button id="clickButton">Click me!</button>
+    <div id="hoverDiv" style="width:200px; height:100px; border:1px solid black;">Hover over me!</div>
+    <script>
+        //click event
+        document.getElementById('clickButton').onclick = () => {
+            alert('button was clicked!, hello g');
+        };
+
+        //mouse over event
+        const hoverDiv = document.getElementById('hoverDiv');
+        hoverDiv.onmouseover = function () {
+            hoverDiv.classList.add('hovered');
+        };
+
+        hoverDiv.onmouseout = function () {
+            hoverDiv.classList.remove('hovered');
+        };
+
+        //keydown event
+        document.onkeydown = function (event) {
+            console.log('key pressed:', 'event key');
+        };
+
+        //focus event 
+
+        const inputField = document.createElement('input');
+        inputField.placeholder = 'Type something...';
+        document.body.appendChild(inputField);
+        inputField.onfocus = function () {
+            console.log('input field is focused');
+        };
+
+        //change event
+
+        inputField.onchange = function () {
+            console.log('input changed to',inputField.value);
+        };
+    </script>
+</body>
+
+</html>

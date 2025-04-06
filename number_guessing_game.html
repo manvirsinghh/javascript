@@ -1,0 +1,142 @@
+<!-- rules of gameThe game generates a random number between 1 and 100.
+
+The player enters a number in an input field and submits their guess.
+
+Game provides hints:
+
+If the guess is too high 📈 → Show a message: "Too High! Try again."
+
+If the guess is too low 📉 → Show a message: "Too Low! Try again."
+
+If the guess is correct 🎉 → Show a message: "Congratulations! You guessed it!"
+
+The player has a limited number of attempts (e.g., 10 chances).
+
+Game Over Conditions:
+
+If the player guesses the number, they win! 🎉
+
+If the player uses all attempts and still doesn't guess, they lose! ❌
+
+Display previous guesses to help the player. -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number guessing game project</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;  /* Centers horizontally */
+            align-items: center;  /* Centers vertically */
+            height: 80vh;  /* Full viewport height */
+            margin: 0;
+        }
+        
+        .container {
+            border: 1px solid orange;
+            width: 50%;
+            padding: 20px;
+            text-align: center;
+            border-width: 10px;
+            box-shadow: 0 0 10px rgba(226, 153, 16, 0.8); 
+            background-color:pink;
+        }
+
+       
+        h1{
+            color:blue;
+            font-family: Arial, Helvetica, sans-serif
+            font-style: normal;
+            font-weight: bolder;
+            font-size: 30px;
+            padding:10px 10px;
+            text-shadow: 5px 5px 5px gray;
+        }
+        input {
+            margin-top:10px;
+            padding:5px 5px;
+            text-align: center;
+        }
+        button{
+           display: block;
+            border:1px solid black;
+            border-radius: 3px;
+            padding:5px;
+            margin:10px auto;
+            color:yellow;
+            background-color: purple;
+            font-weight: bold;
+            width:100px;
+        }
+        button:hover{
+            background-color: pink;
+            color:brown;
+        }
+        @media (max-width:475px){
+            .container{
+                width:300px;
+            }
+           
+        }
+      
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Number Guessing Game</h1>
+    <p>Guess the number between 1 and 100</p>
+    <input type="number" id="userinput" placeholder="Enter the number">
+    <button id="btn" onclick="clickme()">Guess</button>
+    <p id="message"></p>
+    <p>Previous Guesses: <span id="previousGuesses"></span></p>
+    <p>Attempts Left: <span id="attemptsLeft">10</span></p>
+    </div>
+
+    <script>
+        let number = Math.floor(Math.random() * 100) + 1;  // Generate random number between 1 and 100
+        let maxattempt = 10;
+        const guesses = [];
+
+        function clickme() {
+            let userguess = parseInt(document.getElementById("userinput").value);  // Get user input
+            let message = document.getElementById("message");
+            let previousGuesses = document.getElementById("previousGuesses");
+            let attemptsLeft = document.getElementById("attemptsLeft");
+
+            if (isNaN(userguess) || userguess < 1 || userguess > 100) {
+                message.textContent = "❌ Please enter a valid number between 1 and 100!";
+                return;
+            }
+
+            guesses.push(userguess);
+            previousGuesses.textContent = guesses.join(", ");
+            maxattempt--;  // Decrease attempts
+            attemptsLeft.textContent = maxattempt;
+
+            if (userguess === number) {
+                message.textContent = "🎉 Congratulations, you guessed the number!";
+                document.getElementById("btn").disabled = true;  // Disable button after win
+            } else if (userguess < number) {
+                message.textContent = "📉 Too low, try again!";
+            } else {
+                message.textContent = "📈 Too high, try again!";
+            }
+
+            if (maxattempt === 0 && userguess !== number) {
+                message.textContent = `❌ Game Over! The correct number was ${number}`;
+                document.getElementById("btn").disabled = true;
+            }
+        }
+    </script>
+</body>
+</html>

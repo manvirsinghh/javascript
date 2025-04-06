@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>center the div element</title>
+    <style>
+
+/*
+IST WAY */
+.container{
+position: absolute;
+top:50%;
+left:50%;
+
+}
+
+
+
+
+
+        
+        /*
+2ND WAY
+
+.container{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+        */
+        
+        /*  3RD WAY 
+          .container{ 
+            position: absolute;
+            top:50%;
+            left:50%;
+            transform: translate(-50%,-50%);
+        } */
+
+        /* 4th way
+        .container{
+        margin:0px auto;
+        width:50%;
+    </style>
+</head>
+<body>
+    <div class="container">
+hello
+    </div>
+</body>
+</html>
